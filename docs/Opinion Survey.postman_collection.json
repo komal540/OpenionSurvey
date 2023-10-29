@@ -1,0 +1,202 @@
+{
+	"info": {
+		"_postman_id": "4b93419b-9e2d-49f2-be38-6c30b454b4a1",
+		"name": "Opinion Survey",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16901204"
+	},
+	"item": [
+		{
+			"name": "Logic delete op",
+			"item": [
+				{
+					"name": "localhost:8080/opinion/surveys/2",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/opinion/surveys/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"opinion",
+								"surveys",
+								"2"
+							]
+						},
+						"description": "Logic delete"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Survey",
+			"item": [
+				{
+					"name": "localhost:8080/opinion/surveys",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"name\": \"Survey one\",\n    \"campaignCode\": \"test0081\",\n    \"enabled\": false,\n    \"description\": \"test survey\",\n    \"questions\": [\n        {\n             \"id\": 7,\n             \"question\":\"what is userId ?\",\n            \"type\": \"CHECKBOX\",\n            \"options\": [\"a\",\"b\"]\n        },\n        {\n            \"id\": 72,\n            \"question\": \"What is the name of students?\",\n            \"type\": \"MULTIPLE_CHOICE\",\n            \"options\": [\n                \"Rojo\",\n                \"Azul\",\n                \"Verde\"\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/opinion/surveys",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"opinion",
+								"surveys"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/opinion/surveys",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/opinion/surveys",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"opinion",
+								"surveys"
+							]
+						},
+						"description": "Get all Surveys "
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/opinion/surveys/62",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/opinion/surveys/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"opinion",
+								"surveys",
+								"1"
+							]
+						},
+						"description": "Find by Id"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sind Answers by ID",
+			"item": [
+				{
+					"name": "localhost:8080/opinion/answers/:email",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": 202,\r\n        \"email\": \"other@example.com\",\r\n        \"question\": {\r\n            \"id\": 1,\r\n            \"question\": \"This is test?\",\r\n            \"type\": \"CHECKBOX\",\r\n            \"options\": [\r\n                \"Si\",\r\n                \"No\"\r\n            ]\r\n        },\r\n        \"answers\": [\r\n            \"No\"\r\n        ]\r\n    },\r\n    {\r\n        \"id\": 203,\r\n        \"email\": \"other@example.com\",\r\n        \"question\": {\r\n            \"id\": 2,\r\n            \"question\": \"this is not test?\",\r\n            \"type\": \"MULTIPLE_CHOICE\",\r\n            \"options\": [\r\n                \"Rojo\",\r\n                \"Azul\",\r\n                \"Verde\"\r\n            ]\r\n        },\r\n        \"answers\": [\r\n            \"Verde\"\r\n        ]\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/opinion/answers/:email",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"opinion",
+								"answers",
+								":email"
+							],
+							"variable": [
+								{
+									"key": "email",
+									"value": "other@example.com"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "List Answers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/opinion/answers/62",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"opinion",
+						"answers",
+						"62"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/opinion/answers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"other@example.com\",\n    \"surveyId\" : 1,\n    \"questionAnswers\" : [\n        {\n            \"questionId\": 1,\n            \"answers\" : [\"No\"]\n        },\n        {\n            \"questionId\":3,\n            \"answers\": [\"Azul\"]\n        }\n    ] \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/opinion/answers",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"opinion",
+						"answers"
+					]
+				},
+				"description": "save answers"
+			},
+			"response": []
+		}
+	]
+}
